@@ -1,26 +1,79 @@
 @import "tailwindcss";
 
+/*
+  MD Bil & Motor — design tokens (Tailwind v4 @theme).
+  Palette derived from the real logo: dark navy wordmark, muted gold
+  underline, cream background. We keep a MECA light-blue as a link/accent
+  so the brand still reads as a MECA partner.
+*/
+@theme {
+  /* Brand colors */
+  --color-ink: #0d1b2a;        /* near-black navy — primary dark surfaces */
+  --color-navy: #13263b;       /* logo wordmark navy */
+  --color-navy-700: #1c3854;   /* lighter navy for hovers/borders */
+  --color-blue: #0070c0;       /* MECA light blue — links/accents */
+  --color-gold: #e0a92e;       /* refined gold (from logo underline) */
+  --color-gold-bright: #ffd24a;/* brighter gold for highlights */
+  --color-cream: #f5f2ea;      /* logo background cream */
+  --color-paper: #fbfaf7;      /* off-white page background */
+  --color-steel: #5f7184;      /* muted slate text */
+  --color-line: #e6e1d6;       /* hairline borders on light bg */
+
+  /* Typography */
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-body: var(--font-barlow), system-ui, sans-serif;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* offset for fixed nav on anchor jumps */
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display headings use the condensed face */
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+/* Reusable section reveal-on-scroll (progressive enhancement).
+   Gated on `.js` so content is fully visible if JS is disabled, and
+   disabled entirely for users who prefer reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Diagonal "speed" hatch used on dark hero/CTA surfaces */
+.bg-hatch {
+  background-image: repeating-linear-gradient(
+    -55deg,
+    transparent,
+    transparent 60px,
+    rgba(255, 255, 255, 0.035) 60px,
+    rgba(255, 255, 255, 0.035) 62px
+  );
 }

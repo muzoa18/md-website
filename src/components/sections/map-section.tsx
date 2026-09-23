@@ -2,6 +2,7 @@ import { MapPin, Phone, Clock } from "lucide-react";
 import { Container, Eyebrow, Heading } from "@/components/ui";
 import { BookingButton } from "@/components/booking-button";
 import { EmailLink } from "@/components/email-link";
+import { PhoneLink } from "@/components/phone-link";
 import { site } from "@/lib/site";
 
 export function MapSection() {
@@ -21,9 +22,7 @@ export function MapSection() {
               {site.postal} {site.city}
             </Detail>
             <Detail icon={<Phone className="h-5 w-5 text-gold" />} label="Telefon">
-              <a href={site.phoneHref} className="hover:text-gold">
-                {site.phone}
-              </a>
+              <PhoneLink label="map" className="hover:text-gold" />
             </Detail>
             <Detail icon={<Clock className="h-5 w-5 text-gold" />} label="Öppettider">
               {site.openingHours.map((o) => (
@@ -33,7 +32,7 @@ export function MapSection() {
               ))}
             </Detail>
             <div className="pt-2">
-              <EmailLink className="text-sm text-white/80 hover:text-gold" iconClassName="text-gold" />
+              <EmailLink label="map" className="text-sm text-white/80 hover:text-gold" iconClassName="text-gold" />
             </div>
             <BookingButton label="map">Boka tid online</BookingButton>
           </div>
@@ -41,7 +40,7 @@ export function MapSection() {
           <div className="min-h-[380px] overflow-hidden">
             <iframe
               src={site.mapsEmbed}
-              title="MD Bil & Motor – karta"
+              title="MD Bil – karta"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="h-full min-h-[380px] w-full border-0 [filter:grayscale(20%)_contrast(1.05)]"

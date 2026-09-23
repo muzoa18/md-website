@@ -8,7 +8,7 @@ import { services } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Tjänster – service, däck, diagnostik & elbil",
   description:
-    "Allt vi erbjuder på MD Bil & Motor i Eskilstuna: service och reparation, diagnostik, däck & hjul, bromsar, elbil/hybrid och AC-service.",
+    "Allt vi erbjuder på MD Bil i Eskilstuna: service och reparation, diagnostik, däck & hjul, bromsar, elbil/hybrid och AC-service.",
   alternates: { canonical: "/tjanster" },
 };
 

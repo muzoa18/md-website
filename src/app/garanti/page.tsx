@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check, Phone, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Container, Heading, Eyebrow } from "@/components/ui";
 import { Guarantees } from "@/components/sections/guarantees";
 import { BookingButton } from "@/components/booking-button";
-import { site } from "@/lib/site";
+import { PhoneLink } from "@/components/phone-link";
 
 export const metadata: Metadata = {
   title: "Garanti",
   description:
-    "Garanti på allt arbete hos MD Bil & Motor: 1 års garanti på utfört arbete och 3 års garanti på reservdelar. Så fungerar garantin och så reklamerar du.",
+    "Garanti på allt arbete hos MD Bil: 1 års garanti på utfört arbete och 3 års garanti på reservdelar. Så fungerar garantin och så reklamerar du.",
   alternates: { canonical: "/garanti" },
 };
 
@@ -159,12 +159,11 @@ export default function WarrantyPage() {
             </p>
             <div className="flex flex-col gap-3 sm:flex-row">
               <BookingButton label="garanti_cta">Boka tid</BookingButton>
-              <a
-                href={site.phoneHref}
+              <PhoneLink
+                label="garanti_page"
+                showIcon
                 className="inline-flex items-center justify-center gap-2 border-2 border-white/30 px-7 py-3.5 font-display font-bold uppercase tracking-wide text-white hover:border-gold hover:text-gold"
-              >
-                <Phone className="h-4 w-4" /> {site.phone}
-              </a>
+              />
             </div>
             <Link
               href="/villkor"

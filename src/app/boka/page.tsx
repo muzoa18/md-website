@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Phone, Clock, CalendarCheck, ShieldCheck, BadgeCheck } from "lucide-react";
+import { Clock, CalendarCheck, ShieldCheck, BadgeCheck } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/ui";
 import { BookingButton } from "@/components/booking-button";
+import { PhoneLink } from "@/components/phone-link";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Boka tid",
   description:
-    "Boka tid hos MD Bil & Motor i Eskilstuna – online dygnet runt via MECA:s bokningssystem, eller ring oss direkt.",
+    "Boka tid hos MD Bil i Eskilstuna – online dygnet runt via MECA:s bokningssystem, eller ring oss direkt.",
   alternates: { canonical: "/boka" },
 };
 
@@ -41,12 +42,11 @@ export default function BookingPage() {
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
               <BookingButton label="boka_page">Boka online</BookingButton>
-              <a
-                href={site.phoneHref}
+              <PhoneLink
+                label="boka_page"
+                showIcon
                 className="inline-flex items-center justify-center gap-2 border-2 border-navy/25 px-7 py-3.5 font-display font-bold uppercase tracking-wide text-navy transition-colors hover:border-gold"
-              >
-                <Phone className="h-4 w-4" /> {site.phone}
-              </a>
+              />
             </div>
 
             <div className="mt-10 border-t border-line pt-6">

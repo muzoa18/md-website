@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Check, Phone, ArrowRight } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Container } from "@/components/ui";
 import { Icon } from "@/components/icon";
 import { BookingButton } from "@/components/booking-button";
-import { services, site } from "@/lib/site";
+import { PhoneLink } from "@/components/phone-link";
+import { services } from "@/lib/site";
 
 // Pre-render one static page per service at build time.
 export function generateStaticParams() {
@@ -95,12 +96,11 @@ export default async function ServiceDetailPage({
                 <BookingButton label={`service_${service.slug}`}>
                   Boka tid online
                 </BookingButton>
-                <a
-                  href={site.phoneHref}
+                <PhoneLink
+                  label={`service_${service.slug}`}
+                  showIcon
                   className="inline-flex items-center justify-center gap-2 border-2 border-white/30 px-7 py-3.5 font-display font-bold uppercase tracking-wide text-white hover:border-gold hover:text-gold"
-                >
-                  <Phone className="h-4 w-4" /> {site.phone}
-                </a>
+                />
               </div>
             </div>
           </aside>

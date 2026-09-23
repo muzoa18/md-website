@@ -4,8 +4,9 @@ import { useState } from "react";
 import { MapPin, Phone, Clock, CheckCircle2 } from "lucide-react";
 import { Container, Eyebrow, Heading } from "@/components/ui";
 import { EmailLink } from "@/components/email-link";
+import { PhoneLink } from "@/components/phone-link";
 import { site } from "@/lib/site";
-import { track } from "@/lib/track";
+import { trackFormSubmit } from "@/lib/track";
 
 type Status = "idle" | "sending" | "error" | "done";
 
@@ -16,7 +17,7 @@ export function Contact() {
     e.preventDefault();
     const form = e.currentTarget;
     setStatus("sending");
-    track("form_submit", { category: "contact", label: "contact_form" });
+    trackFormSubmit("contact_form");
     try {
       const res = await fetch(`https://formspree.io/f/${site.formspreeId}`, {
         method: "POST",
@@ -48,9 +49,7 @@ export function Contact() {
               {site.address}, {site.postal} {site.city}
             </Detail>
             <Detail icon={<Phone className="h-5 w-5 text-gold" />} label="Telefon">
-              <a href={site.phoneHref} className="hover:text-gold">
-                {site.phone}
-              </a>
+              <PhoneLink label="contact_section" className="hover:text-gold" />
             </Detail>
             <Detail icon={<Clock className="h-5 w-5 text-gold" />} label="Öppettider">
               {site.openingHours.map((o) => (
@@ -60,7 +59,7 @@ export function Contact() {
               ))}
             </Detail>
             <div className="pt-1">
-              <EmailLink className="text-sm text-white/85 hover:text-gold" iconClassName="text-gold" />
+              <EmailLink label="contact_section" className="text-sm text-white/85 hover:text-gold" iconClassName="text-gold" />
             </div>
           </div>
 
@@ -73,9 +72,7 @@ export function Contact() {
               <p className="text-white/70">
                 Vi återkommer till dig så snart vi kan. Är det brådskande är du
                 välkommen att ringa oss på{" "}
-                <a href={site.phoneHref} className="text-gold">
-                  {site.phone}
-                </a>
+                <PhoneLink label="contact_success" className="text-gold" />
                 .
               </p>
             </div>

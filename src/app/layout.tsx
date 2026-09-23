@@ -26,8 +26,8 @@ const barlowCondensed = Barlow_Condensed({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "MD Bil & Motor – MECA-verkstad i Eskilstuna",
-    template: "%s | MD Bil & Motor",
+    default: `${site.name} – ${site.tagline}`,
+    template: `%s | ${site.name}`,
   },
   description:
     "MECA-certifierad bilverkstad i Eskilstuna med 25 års erfarenhet. Service, reparation, däck, diagnostik och el-/hybridbil – med garanti på allt arbete.",
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "sv_SE",
-    siteName: "MD Bil & Motor",
-    title: "MD Bil & Motor – MECA-verkstad i Eskilstuna",
+    siteName: site.name,
+    title: `${site.name} – ${site.tagline}`,
     description:
       "Service, reparation och däck med garanti. MECA-partner och Godkänd Bilverkstad i Eskilstuna.",
   },

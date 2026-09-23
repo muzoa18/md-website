@@ -3,9 +3,10 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { site, nav } from "@/lib/site";
-import { track } from "@/lib/track";
+import { trackBooking } from "@/lib/track";
+import { PhoneLink } from "./phone-link";
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -33,11 +34,11 @@ export function Nav() {
       }`}
     >
       <nav className="flex h-[70px] items-center justify-between bg-navy px-5 sm:px-8">
-        <Link href="/" className="flex items-center gap-3" aria-label="MD Bil & Motor — startsida">
+        <Link href="/" className="flex items-center gap-3" aria-label={`${site.name} — startsida`}>
           <span className="inline-flex h-11 w-11 items-center justify-center overflow-hidden rounded-sm bg-cream">
             <Image
               src="/images/logo.png"
-              alt="MD Bil & Motor"
+              alt={site.name}
               width={44}
               height={44}
               className="h-11 w-11 object-cover"
@@ -45,7 +46,7 @@ export function Nav() {
             />
           </span>
           <span className="font-display text-xl font-black uppercase tracking-wide text-white">
-            MD <span className="text-gold">Bil&nbsp;&amp;&nbsp;Motor</span>
+            MD <span className="text-gold">Bil</span>
           </span>
         </Link>
 
@@ -68,7 +69,7 @@ export function Nav() {
             href={site.bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => track("boka_click", { label: "nav" })}
+            onClick={() => trackBooking("nav")}
             className="hidden bg-gold px-5 py-2.5 font-display text-sm font-bold uppercase tracking-wide text-ink transition-colors hover:bg-gold-bright sm:inline-block"
           >
             Boka tid
@@ -106,19 +107,18 @@ export function Nav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
-                  track("boka_click", { label: "mobile_menu" });
+                  trackBooking("mobile_menu");
                   setOpen(false);
                 }}
                 className="flex items-center justify-center gap-2 bg-gold px-5 py-3 font-display text-base font-bold uppercase tracking-wide text-ink"
               >
                 Boka tid online
               </a>
-              <a
-                href={site.phoneHref}
+              <PhoneLink
+                label="mobile_menu"
+                showIcon
                 className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-white/70"
-              >
-                <Phone className="h-4 w-4" /> {site.phone}
-              </a>
+              />
             </li>
           </ul>
         </div>

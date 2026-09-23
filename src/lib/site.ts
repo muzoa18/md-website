@@ -8,7 +8,7 @@
  */
 
 export const site = {
-  name: "MD Bil & Motor",
+  name: "MD Bil",
   legalName: "MD Bilreparationer AB",
   url: "https://mdbilreparationer.se",
   tagline: "MECA-verkstad i Eskilstuna",
@@ -34,7 +34,6 @@ export const site = {
   bookingUrl:
     "https://boka.meca.se/?workshop=9d4c3438-4990-e611-80e9-5065f38b3531",
   googleReviewsUrl: "https://share.google/8bIpiiwRNdfxGrs0r",
-  giftUpSiteId: "af8838b1-5dda-4801-8950-e0ce218b2fdf",
   formspreeId: "xbdzvpbo",
   mapsEmbed:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000!2d16.5077!3d59.3707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x465e665f0a4f9e75%3A0x1!2s%C3%84girgatan%206%2C%20Eskilstuna!5e0!3m2!1ssv!2sse!4v1",
@@ -246,7 +245,6 @@ export const nav = [
   { href: "/tjanster", label: "Tjänster" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/garanti", label: "Garanti" },
-  { href: "/presentkort", label: "Presentkort" },
   { href: "/kontakt", label: "Kontakt" },
 ] as const;
 

@@ -10,7 +10,7 @@ import { BookingButton } from "@/components/booking-button";
 export const metadata: Metadata = {
   title: "Om oss – MECA-verkstad i Eskilstuna",
   description:
-    "MD Bil & Motor är en oberoende MECA-verkstad i Eskilstuna med över 25 års erfarenhet. Personlig service med en stor koncerns resurser.",
+    "MD Bil är en oberoende MECA-verkstad i Eskilstuna med över 25 års erfarenhet. Personlig service med en stor koncerns resurser.",
   alternates: { canonical: "/om-oss" },
 };
 
@@ -53,7 +53,7 @@ export default function AboutPage() {
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
                 src="/images/garage-day.png"
-                alt="MD Bil & Motor verkstad"
+                alt="MD Bil verkstad"
                 fill
                 className="object-cover"
               />
@@ -74,7 +74,7 @@ export default function AboutPage() {
             </Heading>
             <div className="mt-4 space-y-4 text-steel">
               <p>
-                MD Bil &amp; Motor har tagit hand om Eskilstunabornas fordon i
+                MD Bil har tagit hand om Eskilstunabornas fordon i
                 över 25 år. Under den tiden har bilarna blivit mer avancerade –
                 och vi har följt med utvecklingen, från klassiska
                 förbränningsmotorer till dagens el- och hybridbilar.

@@ -18,7 +18,6 @@ const staticRoutes = [
   "/",
   "/tjanster",
   "/om-oss",
-  "/presentkort",
   "/boka",
   ...nav.map((n) => n.href),
   ...legalNav.map((n) => n.href),

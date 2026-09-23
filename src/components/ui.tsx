@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
-
-function cx(...parts: Array<string | false | undefined | null>) {
-  return parts.filter(Boolean).join(" ");
-}
+import {
+  buttonBase,
+  buttonVariants,
+  cx,
+  type ButtonVariant,
+} from "./button-styles";
 
 /** Constrains content width and applies the standard horizontal gutter. */
 export function Container({
@@ -70,23 +72,11 @@ export function Heading({
 type ButtonProps = {
   children: ReactNode;
   href: string;
-  variant?: "gold" | "outline" | "ghost";
+  variant?: ButtonVariant;
   external?: boolean;
   withArrow?: boolean;
   className?: string;
 } & Omit<ComponentProps<typeof Link>, "href" | "className">;
-
-const buttonBase =
-  "inline-flex items-center justify-center gap-2 font-display font-bold uppercase tracking-[0.06em] " +
-  "transition-all duration-200 px-7 py-3.5 text-[0.95rem]";
-
-const buttonVariants = {
-  gold: "bg-gold text-ink hover:bg-gold-bright hover:-translate-y-0.5 hover:shadow-[0_10px_28px_rgba(224,169,46,0.4)]",
-  outline:
-    "border-2 border-white/40 text-white hover:border-gold hover:text-gold",
-  ghost:
-    "border border-gold/30 text-gold hover:border-gold hover:bg-gold/10",
-};
 
 /** Primary call-to-action. Renders an external <a> when `external`. */
 export function Button({

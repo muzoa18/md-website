@@ -1,6 +1,6 @@
-# MD Bil & Motor — website
+# MD Bil — website
 
-Modern marketing website for **MD Bil & Motor** (legal name: MD Bilreparationer AB),
+Modern marketing website for **MD Bil** (legal name: MD Bilreparationer AB),
 a MECA-certified car workshop in Eskilstuna, Sweden.
 
 This is a rebuild of the previous single-file static `index.html` (hosted on Miss
@@ -39,7 +39,6 @@ src/
 │  │  ├─ page.tsx             # Services overview
 │  │  └─ [slug]/page.tsx      # One static page per service (SSG)
 │  ├─ om-oss/page.tsx         # About / workshop
-│  ├─ presentkort/page.tsx    # Gift cards (Gift Up embed)
 │  └─ boka/page.tsx           # Booking
 ├─ components/
 │  ├─ nav.tsx, footer.tsx     # Site chrome
@@ -78,7 +77,6 @@ link and sitemap entry appear with no other changes.
 | --- | --- | --- |
 | **MECA online booking** | `site.bookingUrl` | Opens MECA's booking system in a new tab |
 | **Formspree** (contact form) | `site.formspreeId` | Posts the contact form, shows inline success |
-| **Gift Up!** (gift cards) | `site.giftUpSiteId` | Embedded checkout on `/presentkort` |
 | **Google Analytics** | `site.gaId` | Loaded in `layout.tsx`; events via `lib/track.ts` |
 | **Google Maps** | `site.mapsEmbed` | Embedded iframe on home + about |
 

@@ -3,6 +3,7 @@ import { MapPin, Phone, Clock } from "lucide-react";
 import { Container } from "./ui";
 import { site, services, nav, legalNav } from "@/lib/site";
 import { EmailLink } from "./email-link";
+import { PhoneLink } from "./phone-link";
 
 export function Footer() {
   return (
@@ -12,7 +13,7 @@ export function Footer() {
           {/* Brand + NAP */}
           <div>
             <p className="font-display text-2xl font-black uppercase tracking-wide text-white">
-              MD <span className="text-gold">Bil &amp; Motor</span>
+              MD <span className="text-gold">Bil</span>
             </p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed">
               MECA-certifierad bilverkstad i Eskilstuna. Service, reparation och
@@ -25,11 +26,9 @@ export function Footer() {
               </p>
               <p className="flex items-center gap-2">
                 <Phone className="h-4 w-4 shrink-0 text-gold" />
-                <a href={site.phoneHref} className="hover:text-gold">
-                  {site.phone}
-                </a>
+                <PhoneLink label="footer" className="hover:text-gold" />
               </p>
-              <EmailLink className="hover:text-gold" iconClassName="text-gold" />
+              <EmailLink label="footer" className="hover:text-gold" iconClassName="text-gold" />
             </div>
           </div>
 

@@ -6,7 +6,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/tjanster",
     "/om-oss",
-    "/presentkort",
     "/boka",
     "/kontakt",
     "/garanti",

@@ -6,7 +6,6 @@ import { Vehicles } from "@/components/sections/vehicles";
 import { Guarantees } from "@/components/sections/guarantees";
 import { MapSection } from "@/components/sections/map-section";
 import { Gbv } from "@/components/sections/gbv";
-import { Presentkort } from "@/components/sections/presentkort";
 import { MecaBanner } from "@/components/sections/meca-banner";
 import { Faq } from "@/components/sections/faq";
 import { Contact } from "@/components/sections/contact";
@@ -23,7 +22,6 @@ export default function HomePage() {
       <Vehicles />
       <Guarantees />
       <Gbv />
-      <Presentkort />
       <MecaBanner />
       <MapSection />
       <Faq />

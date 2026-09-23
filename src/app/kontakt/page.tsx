@@ -6,7 +6,7 @@ import { MapSection } from "@/components/sections/map-section";
 export const metadata: Metadata = {
   title: "Kontakt",
   description:
-    "Kontakta MD Bil & Motor i Eskilstuna – ring, mejla eller skicka ett meddelande via formuläret. Adress, öppettider och karta.",
+    "Kontakta MD Bil i Eskilstuna – ring, mejla eller skicka ett meddelande via formuläret. Adress, öppettider och karta.",
   alternates: { canonical: "/kontakt" },
 };
 

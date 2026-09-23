@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { Container, Button } from "@/components/ui";
+import { Container } from "@/components/ui";
+import { ContactButton } from "@/components/contact-button";
 import { BookingButton } from "@/components/booking-button";
 
 const stats = [
@@ -57,9 +58,9 @@ export function Hero() {
 
           <div className="mt-9 flex flex-wrap gap-4">
             <BookingButton label="hero">Boka tid nu</BookingButton>
-            <Button href="/#kontakt" variant="outline">
+            <ContactButton label="hero" variant="outline">
               Kontakta oss
-            </Button>
+            </ContactButton>
           </div>
         </div>
 

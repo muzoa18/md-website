@@ -28,7 +28,7 @@ export function About() {
           <div className="relative aspect-[4/3] overflow-hidden">
             <Image
               src="/images/garage-day.png"
-              alt="MD Bil & Motor verkstad i Eskilstuna"
+              alt="MD Bil verkstad i Eskilstuna"
               fill
               className="object-cover"
             />

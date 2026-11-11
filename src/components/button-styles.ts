@@ -22,3 +22,21 @@ export const buttonVariants = {
 };
 
 export type ButtonVariant = keyof typeof buttonVariants;
+
+/**
+ * Phone / email rendered as a tappable button rather than plain text.
+ * Plain contact text on dark sections didn't read as pressable — visitors
+ * copied the number by hand (no phone_click fired) or didn't act at all.
+ * Shape: gold icon tile + small verb ("Ring oss") + the number/address.
+ */
+export const contactButton = {
+  root:
+    "group inline-flex max-w-full items-center gap-3 border-2 border-white/20 bg-white/5 py-2 pl-2 pr-5 text-left " +
+    "transition-colors duration-200 hover:border-gold hover:bg-white/10 active:bg-white/15",
+  icon:
+    "flex h-11 w-11 shrink-0 items-center justify-center bg-gold text-ink",
+  verb:
+    "block font-display text-[0.7rem] font-bold uppercase tracking-[0.18em] text-gold",
+  value:
+    "block [overflow-wrap:anywhere] font-display text-lg font-bold tracking-wide text-white group-hover:text-gold",
+};

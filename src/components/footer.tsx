@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { Container } from "./ui";
 import { site, services, nav, legalNav } from "@/lib/site";
 import { EmailLink } from "./email-link";
@@ -24,11 +24,10 @@ export function Footer() {
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
                 {site.address}, {site.postal} {site.city}
               </p>
-              <p className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-gold" />
-                <PhoneLink label="footer" className="hover:text-gold" />
-              </p>
-              <EmailLink label="footer" className="hover:text-gold" iconClassName="text-gold" />
+            </div>
+            <div className="mt-5 flex flex-col items-start gap-3">
+              <PhoneLink label="footer" button />
+              <EmailLink label="footer" button />
             </div>
           </div>
 

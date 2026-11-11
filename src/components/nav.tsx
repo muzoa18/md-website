@@ -121,11 +121,7 @@ export function Nav() {
               >
                 Boka tid online
               </a>
-              <PhoneLink
-                label="mobile_menu"
-                showIcon
-                className="mt-3 flex items-center justify-center gap-2 text-sm font-medium text-white/70"
-              />
+              <PhoneLink label="mobile_menu" button className="mt-3 w-full" />
             </li>
           </ul>
         </div>

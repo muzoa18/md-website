@@ -3,6 +3,7 @@
 import { Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { trackPhone } from "@/lib/track";
+import { contactButton, cx } from "./button-styles";
 
 /**
  * The phone number as a `tel:` link, firing the `phone_click` key event.
@@ -21,6 +22,7 @@ export function PhoneLink({
   className,
   iconClassName,
   showIcon = false,
+  button = false,
   children,
 }: {
   /** Placement, e.g. "footer" — becomes the GA event_label. */
@@ -28,9 +30,29 @@ export function PhoneLink({
   className?: string;
   iconClassName?: string;
   showIcon?: boolean;
+  /** Render as a "Ring oss" button instead of inline text. */
+  button?: boolean;
   /** Defaults to the formatted number from site config. */
   children?: React.ReactNode;
 }) {
+  if (button) {
+    return (
+      <a
+        href={site.phoneHref}
+        onClick={() => trackPhone(label)}
+        className={cx(contactButton.root, className)}
+      >
+        <span className={contactButton.icon}>
+          <Phone className="h-5 w-5" aria-hidden />
+        </span>
+        <span className="min-w-0">
+          <span className={contactButton.verb}>Ring oss</span>
+          <span className={contactButton.value}>{site.phone}</span>
+        </span>
+      </a>
+    );
+  }
+
   return (
     <a
       href={site.phoneHref}

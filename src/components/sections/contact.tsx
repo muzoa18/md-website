@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { MapPin, Phone, Clock, CheckCircle2 } from "lucide-react";
+import { MapPin, Clock, CheckCircle2 } from "lucide-react";
 import { Container, Eyebrow, Heading } from "@/components/ui";
 import { EmailLink } from "@/components/email-link";
 import { PhoneLink } from "@/components/phone-link";
@@ -48,9 +48,6 @@ export function Contact() {
             <Detail icon={<MapPin className="h-5 w-5 text-gold" />} label="Adress">
               {site.address}, {site.postal} {site.city}
             </Detail>
-            <Detail icon={<Phone className="h-5 w-5 text-gold" />} label="Telefon">
-              <PhoneLink label="contact_section" className="hover:text-gold" />
-            </Detail>
             <Detail icon={<Clock className="h-5 w-5 text-gold" />} label="Öppettider">
               {site.openingHours.map((o) => (
                 <span key={o.day} className="block">
@@ -58,8 +55,9 @@ export function Contact() {
                 </span>
               ))}
             </Detail>
-            <div className="pt-1">
-              <EmailLink label="contact_section" className="text-sm text-white/85 hover:text-gold" iconClassName="text-gold" />
+            <div className="flex flex-col items-start gap-3 pt-1">
+              <PhoneLink label="contact_section" button />
+              <EmailLink label="contact_section" button />
             </div>
           </div>
 
@@ -72,7 +70,7 @@ export function Contact() {
               <p className="text-white/70">
                 Vi återkommer till dig så snart vi kan. Är det brådskande är du
                 välkommen att ringa oss på{" "}
-                <PhoneLink label="contact_success" className="text-gold" />
+                <PhoneLink label="contact_success" className="text-gold underline underline-offset-2" />
                 .
               </p>
             </div>
@@ -81,7 +79,7 @@ export function Contact() {
               <p className="text-sm text-white/65">
                 {site.replyPromise ? `${site.replyPromise} ` : ""}
                 Brådskande? Ring{" "}
-                <PhoneLink label="contact_form_hint" className="text-gold hover:underline" />
+                <PhoneLink label="contact_form_hint" className="text-gold underline underline-offset-2" />
                 .
               </p>
               <div className="grid gap-3 sm:grid-cols-2">

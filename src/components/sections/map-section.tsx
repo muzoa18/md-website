@@ -1,4 +1,4 @@
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
 import { Container, Eyebrow, Heading } from "@/components/ui";
 import { BookingButton } from "@/components/booking-button";
 import { EmailLink } from "@/components/email-link";
@@ -21,9 +21,6 @@ export function MapSection() {
               <br />
               {site.postal} {site.city}
             </Detail>
-            <Detail icon={<Phone className="h-5 w-5 text-gold" />} label="Telefon">
-              <PhoneLink label="map" className="hover:text-gold" />
-            </Detail>
             <Detail icon={<Clock className="h-5 w-5 text-gold" />} label="Öppettider">
               {site.openingHours.map((o) => (
                 <span key={o.day} className="block">
@@ -31,10 +28,11 @@ export function MapSection() {
                 </span>
               ))}
             </Detail>
-            <div className="pt-2">
-              <EmailLink label="map" className="text-sm text-white/80 hover:text-gold" iconClassName="text-gold" />
+            <div className="flex flex-col items-start gap-3 pt-1">
+              <PhoneLink label="map" button />
+              <EmailLink label="map" button />
+              <BookingButton label="map">Boka tid online</BookingButton>
             </div>
-            <BookingButton label="map">Boka tid online</BookingButton>
           </div>
 
           <div className="min-h-[380px] overflow-hidden">

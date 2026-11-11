@@ -11,6 +11,7 @@ import {
   guarantees,
   nav,
   legalNav,
+  prices,
 } from "./site";
 
 /**
@@ -149,5 +150,51 @@ describe("navigation", () => {
   it("has unique nav hrefs", () => {
     const hrefs = nav.map((n) => n.href);
     expect(new Set(hrefs).size).toBe(hrefs.length);
+  });
+});
+
+describe("prices", () => {
+  it("has at least one group, each with items", () => {
+    expect(prices.length).toBeGreaterThan(0);
+    for (const g of prices) {
+      expect(g.title).toBeTruthy();
+      expect(g.items.length, g.title).toBeGreaterThan(0);
+    }
+  });
+
+  it("uses whole, positive SEK amounts (or null for 'Ring för pris')", () => {
+    for (const g of prices) {
+      for (const p of g.items) {
+        expect(p.name, g.title).toBeTruthy();
+        if (p.from === null) continue;
+        expect(Number.isInteger(p.from), p.name).toBe(true);
+        expect(p.from, p.name).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("links each group to a service that exists", () => {
+    const slugs = services.map((s) => s.slug);
+    for (const g of prices) {
+      if (g.service) expect(slugs, g.title).toContain(g.service);
+    }
+  });
+
+  it("maps at most one price group per service page", () => {
+    const linked = prices.flatMap((g) => (g.service ? [g.service] : []));
+    expect(new Set(linked).size).toBe(linked.length);
+  });
+});
+
+describe("optional trust fields", () => {
+  it("has a positive review count when one is set", () => {
+    if (googleScore.count !== null) {
+      expect(Number.isInteger(googleScore.count)).toBe(true);
+      expect(googleScore.count).toBeGreaterThanOrEqual(reviews.length);
+    }
+  });
+
+  it("uses the Swedish org.nr format when set", () => {
+    if (site.orgNr !== null) expect(site.orgNr).toMatch(/^\d{6}-\d{4}$/);
   });
 });

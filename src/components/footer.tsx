@@ -99,8 +99,10 @@ export function Footer() {
           </div>
           <div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-center">
             <span>
-              © {new Date().getFullYear()} {site.legalName}. Alla rättigheter
-              förbehållna.
+              © {new Date().getFullYear()} {site.legalName}
+              {site.orgNr && <> · Org.nr {site.orgNr}</>}
+              {site.fSkatt && <> · Godkänd för F-skatt</>}
+              . Alla rättigheter förbehållna.
             </span>
             <span className="font-display font-bold uppercase tracking-[0.15em] text-gold/80">
               MECA Partner · Godkänd Bilverkstad

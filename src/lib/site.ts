@@ -23,6 +23,20 @@ export const site = {
   postal: "633 52",
   city: "Eskilstuna",
 
+  /**
+   * Trust details. Each is rendered ONLY when filled in — a `null` hides the
+   * line entirely, so nothing unverified ever reaches the live site.
+   * TODO(owner): fill these in — see TODO.md.
+   */
+  /** Organisationsnummer, e.g. "556123-4567". Shown in the footer. */
+  orgNr: null as string | null,
+  /** true once confirmed "Godkänd för F-skatt". Shown in the footer. */
+  fSkatt: null as boolean | null,
+  /** Set to true only if a courtesy car (lånebil) is offered. */
+  courtesyCar: false,
+  /** Reply-time promise under the contact form, e.g. "Vi svarar samma arbetsdag." */
+  replyPromise: null as string | null,
+
   openingHours: [
     { day: "Måndag–Fredag", hours: "07:00–17:00" },
     { day: "Lördag", hours: "09:00–14:00" },
@@ -154,7 +168,17 @@ export const services: Service[] = [
   },
 ];
 
-export const reviews = [
+export type Review = {
+  stars: number;
+  text: string;
+  author: string;
+  /** When it was posted on Google, e.g. "mars 2026". Shown when set. */
+  date?: string;
+};
+
+// TODO(owner): add the month each review was posted (`date`) — dated reviews
+// read as real; undated ones can look invented.
+export const reviews: Review[] = [
   {
     stars: 5,
     text: "Proffsigt bemötande och snabb service. Lämnade in bilen på morgonen och fick den tillbaka innan lunch. Rekommenderar varmt!",
@@ -172,7 +196,79 @@ export const reviews = [
   },
 ];
 
-export const googleScore = { rating: 4.7, label: "Baserat på Google-recensioner" };
+export const googleScore = {
+  rating: 4.7,
+  /**
+   * Total number of Google reviews behind `rating`. Shown as "· 63 omdömen"
+   * and used for the structured-data rating. While null, the count is hidden
+   * and no aggregate rating is sent to Google (a wrong count is worse than none).
+   * TODO(owner): copy the number from your Google Business Profile.
+   */
+  count: null as number | null,
+  label: "Baserat på Google-recensioner",
+};
+
+/**
+ * Prices shown on /priser and on matching service pages.
+ *
+ * Confirmed by the owner 2026-11-11, except where marked UNCONFIRMED.
+ * Under Swedish price-marking rules a "från"-pris must be a price you
+ * actually charge — keep these in step with the counter price.
+ */
+export type PriceItem = {
+  name: string;
+  /** Lowest price in SEK incl. moms, or null for "Ring för pris". */
+  from: number | null;
+  /** true = a set price ("700 kr"), not a starting price ("från 700 kr"). */
+  fixed?: boolean;
+  note?: string;
+};
+
+export type PriceGroup = {
+  title: string;
+  /** Slug of the matching service — its page shows these prices too. */
+  service?: Service["slug"];
+  items: PriceItem[];
+};
+
+export const prices: PriceGroup[] = [
+  {
+    title: "Däck & hjul",
+    service: "dack-och-hjul",
+    items: [
+      { name: "Hjulskifte (säsongsbyte)", from: 350, note: "Fälgar med däck, 4 hjul" },
+      { name: "Däckhotell", from: 800, note: "Per säsong, inkl. tvätt av hjul" },
+      // UNCONFIRMED: balansering and punktering were not in the owner's answer.
+      { name: "Balansering", from: 495, note: "4 hjul" },
+      { name: "Punkteringslagning", from: 295 },
+      { name: "Däckbyte på fälg", from: 800, note: "4 däck inkl. balansering, exkl. däck" },
+    ],
+  },
+  {
+    title: "Diagnostik & felsökning",
+    service: "diagnostik",
+    items: [
+      { name: "Felkodsavläsning", from: 700, fixed: true, note: "Avläsning av samtliga styrenheter" },
+      { name: "Felsökning", from: 1200, note: "Du får besked om vad som är fel innan vi går vidare" },
+      { name: "Batteritest elbil/hybrid", from: 800, note: "Inkl. battericertifikat" },
+    ],
+  },
+  {
+    title: "Service",
+    service: "reparation-service",
+    items: [
+      { name: "Liten service", from: 1995, note: "Olja, filter och kontroll enligt tillverkarens program" },
+      { name: "Stor service", from: 3495, note: "Enligt tillverkarens program – nybilsgarantin behålls" },
+    ],
+  },
+  {
+    title: "AC & klimat",
+    service: "ac-och-klimat",
+    items: [
+      { name: "AC-service", from: 1400, note: "Kontroll, påfyllning och läcktest" },
+    ],
+  },
+];
 
 export const faqs = [
   {
@@ -243,6 +339,7 @@ export const guarantees = [
 
 export const nav = [
   { href: "/tjanster", label: "Tjänster" },
+  { href: "/priser", label: "Priser" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/garanti", label: "Garanti" },
   { href: "/kontakt", label: "Kontakt" },

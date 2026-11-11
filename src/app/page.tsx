@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/hero";
 import { Reviews } from "@/components/sections/reviews";
 import { Services } from "@/components/sections/services";
 import { About } from "@/components/sections/about";
+import { Process } from "@/components/sections/process";
 import { Vehicles } from "@/components/sections/vehicles";
 import { Guarantees } from "@/components/sections/guarantees";
 import { MapSection } from "@/components/sections/map-section";
@@ -19,6 +20,7 @@ export default function HomePage() {
       <Reviews />
       <Services />
       <About />
+      <Process />
       <Vehicles />
       <Guarantees />
       <Gbv />

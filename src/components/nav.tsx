@@ -65,6 +65,13 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-3">
+          {/* Phone visible on desktop — phones get the bottom action bar */}
+          <PhoneLink
+            label="nav"
+            showIcon
+            iconClassName="text-gold"
+            className="hidden items-center gap-2 text-sm font-semibold tracking-wide text-white transition-colors hover:text-gold xl:inline-flex"
+          />
           <a
             href={site.bookingUrl}
             target="_blank"

@@ -2,10 +2,11 @@ import Image from "next/image";
 import { Container } from "@/components/ui";
 import { ContactButton } from "@/components/contact-button";
 import { BookingButton } from "@/components/booking-button";
+import { site } from "@/lib/site";
 
 const stats = [
   { num: "25+", label: "Års erfarenhet" },
-  { num: "100%", label: "Garanterat arbete" },
+  { num: "1 år", label: "Garanti på arbetet" },
   { num: "Alla", label: "Märken & modeller" },
 ];
 
@@ -82,8 +83,9 @@ export function Hero() {
       <div className="relative z-10 border-t border-white/10 bg-ink/60">
         <Container className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-4 text-sm text-white/70">
           {[
-            "Garanti på arbetet",
-            "Högkvalitativa reservdelar",
+            "3 års garanti på reservdelar",
+            "Offert innan vi börjar",
+            ...(site.courtesyCar ? ["Lånebil finns"] : []),
             "Alla märken & modeller",
             "Elbilar välkomna",
             "Under MECA-koncernen",

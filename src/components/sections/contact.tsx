@@ -78,6 +78,12 @@ export function Contact() {
             </div>
           ) : (
             <form onSubmit={onSubmit} className="flex flex-col gap-3">
+              <p className="text-sm text-white/65">
+                {site.replyPromise ? `${site.replyPromise} ` : ""}
+                Brådskande? Ring{" "}
+                <PhoneLink label="contact_form_hint" className="text-gold hover:underline" />
+                .
+              </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 <Field name="fornamn" placeholder="Förnamn" required />
                 <Field name="efternamn" placeholder="Efternamn" required />

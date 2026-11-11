@@ -8,7 +8,8 @@ import { Container } from "@/components/ui";
 import { Icon } from "@/components/icon";
 import { BookingButton } from "@/components/booking-button";
 import { PhoneLink } from "@/components/phone-link";
-import { services } from "@/lib/site";
+import { services, prices } from "@/lib/site";
+import { PriceList } from "@/components/price-list";
 
 // Pre-render one static page per service at build time.
 export function generateStaticParams() {
@@ -22,8 +23,9 @@ export async function generateMetadata({
   const service = services.find((s) => s.slug === slug);
   if (!service) return {};
   return {
-    title: service.title,
-    description: service.short,
+    // "… i Eskilstuna" matches how people actually search for a local workshop.
+    title: `${service.title} i Eskilstuna`,
+    description: `${service.short} MD Bil – MECA-verkstad i Eskilstuna.`,
     alternates: { canonical: `/tjanster/${service.slug}` },
   };
 }
@@ -35,6 +37,7 @@ export default async function ServiceDetailPage({
   const service = services.find((s) => s.slug === slug);
   if (!service) notFound();
 
+  const priceGroup = prices.find((p) => p.service === service.slug);
   const others = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (
@@ -92,6 +95,17 @@ export default async function ServiceDetailPage({
               <p className="mt-2 text-sm text-white/65">
                 Boka online dygnet runt eller ring oss så hjälper vi dig.
               </p>
+              {priceGroup && (
+                <div className="mt-4">
+                  <PriceList items={priceGroup.items} dark />
+                  <Link
+                    href="/priser"
+                    className="mt-2 inline-block text-xs text-white/55 underline-offset-2 hover:text-gold hover:underline"
+                  >
+                    Alla priser inkl. moms · se hela prislistan
+                  </Link>
+                </div>
+              )}
               <div className="mt-5 flex flex-col gap-3">
                 <BookingButton label={`service_${service.slug}`}>
                   Boka tid online

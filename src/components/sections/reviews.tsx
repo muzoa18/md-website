@@ -32,7 +32,11 @@ export function Reviews() {
             </span>
             <div>
               <Stars n={5} />
-              <p className="mt-1 text-xs text-white/45">{googleScore.label}</p>
+              <p className="mt-1 text-xs text-white/45">
+                {googleScore.count
+                  ? `${googleScore.count} omdömen på Google`
+                  : googleScore.label}
+              </p>
               <p className="mt-1 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/40">
                 <span className="inline-flex gap-0.5">
                   <span className="h-2 w-2 rounded-full bg-[#4285F4]" />
@@ -56,8 +60,13 @@ export function Reviews() {
               <blockquote className="mt-4 text-[0.95rem] italic leading-relaxed text-white/75">
                 “{r.text}”
               </blockquote>
-              <figcaption className="mt-5 font-display text-sm font-bold uppercase tracking-wider text-white/45">
-                — {r.author}
+              <figcaption className="mt-5 flex items-baseline justify-between gap-3 font-display text-sm font-bold uppercase tracking-wider text-white/45">
+                <span>— {r.author}</span>
+                {r.date && (
+                  <span className="text-xs font-medium normal-case tracking-normal text-white/35">
+                    Google · {r.date}
+                  </span>
+                )}
               </figcaption>
             </figure>
           ))}

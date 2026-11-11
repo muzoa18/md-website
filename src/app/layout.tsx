@@ -5,6 +5,7 @@ import "./globals.css";
 import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { MobileActionBar } from "@/components/mobile-action-bar";
 import { site } from "@/lib/site";
 
 // Body face — humanist, automotive-friendly
@@ -58,10 +59,12 @@ export default function RootLayout({
       lang="sv"
       className={`${barlow.variable} ${barlowCondensed.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-ink">
+      {/* Bottom padding on phones = height of the pinned MobileActionBar */}
+      <body className="min-h-full flex flex-col bg-paper text-ink pb-[calc(3.5rem+env(safe-area-inset-bottom))] md:pb-0">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileActionBar />
         <ScrollReveal />
 
         {/* Google Analytics (migrated from the original site) */}

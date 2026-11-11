@@ -5,6 +5,7 @@ import { Container } from "@/components/ui";
 import { BookingButton } from "@/components/booking-button";
 import { PhoneLink } from "@/components/phone-link";
 import { site } from "@/lib/site";
+import { Process } from "@/components/sections/process";
 
 export const metadata: Metadata = {
   title: "Boka tid",
@@ -83,6 +84,8 @@ export default function BookingPage() {
           </div>
         </Container>
       </section>
+
+      <Process />
     </>
   );
 }

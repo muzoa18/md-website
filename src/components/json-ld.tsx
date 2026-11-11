@@ -1,4 +1,4 @@
-import { site, googleScore, reviews } from "@/lib/site";
+import { site, googleScore } from "@/lib/site";
 import { getEmail } from "@/lib/email";
 
 /**
@@ -36,12 +36,20 @@ export function LocalBusinessJsonLd() {
         closes: "14:00",
       },
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: googleScore.rating,
-      reviewCount: reviews.length,
-      bestRating: 5,
-    },
+    // Only with the real Google review count. Previously this sent
+    // reviews.length (the 3 quotes on the page) as the count — a mismatch
+    // with the 4.7 Google rating that can look like inflated self-reviews.
+    ...(googleScore.count
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: googleScore.rating,
+            reviewCount: googleScore.count,
+            bestRating: 5,
+          },
+        }
+      : {}),
+    ...(site.orgNr ? { taxID: site.orgNr } : {}),
     areaServed: "Eskilstuna",
     brand: "MECA",
   };

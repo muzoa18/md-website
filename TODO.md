@@ -4,12 +4,10 @@ The code side is done. These need **you**: facts only you know, or work
 outside the website. Most are one line in `src/lib/site.ts`. Anything left
 empty there stays **hidden** on the site, so nothing half-true goes live.
 
-## ⚠️ Before the next deploy
+## Prices
 
-- [x] Prices confirmed 2026-11-11 (brakes and kupéfilter removed)
-- [ ] **Balansering (495 kr) and punkteringslagning (295 kr)** are still my
-      suggestions. Confirm or remove them in `prices` (`src/lib/site.ts`).
-- [ ] Liten service 1 995 kr / stor service 3 495 kr: confirm the amounts.
+- [x] All prices confirmed and live 2026-11-11 (brakes and kupéfilter removed).
+      Keep `prices` in `src/lib/site.ts` in step with the counter price.
 
 ## Photos (biggest trust win — no code needed from you)
 

@@ -211,7 +211,7 @@ export const googleScore = {
 /**
  * Prices shown on /priser and on matching service pages.
  *
- * Confirmed by the owner 2026-11-11, except where marked UNCONFIRMED.
+ * All confirmed by the owner 2026-11-11.
  * Under Swedish price-marking rules a "från"-pris must be a price you
  * actually charge — keep these in step with the counter price.
  */
@@ -238,7 +238,6 @@ export const prices: PriceGroup[] = [
     items: [
       { name: "Hjulskifte (säsongsbyte)", from: 350, note: "Fälgar med däck, 4 hjul" },
       { name: "Däckhotell", from: 800, note: "Per säsong, inkl. tvätt av hjul" },
-      // UNCONFIRMED: balansering and punktering were not in the owner's answer.
       { name: "Balansering", from: 495, note: "4 hjul" },
       { name: "Punkteringslagning", from: 295 },
       { name: "Däckbyte på fälg", from: 800, note: "4 däck inkl. balansering, exkl. däck" },
